@@ -1,3 +1,4 @@
+<h1>Crear Test Cycle</h1>
 <mat-form-field appearance="fill">
   <mat-label>Titulo</mat-label>
   <input matInput />
@@ -7,15 +8,28 @@
   <input matInput />
 </mat-form-field>
 <mat-form-field appearance="fill">
-  <mat-label>Test Cases</mat-label>
+  <mat-label>Añadir Test Case</mat-label>
   <mat-select>
     <mat-option value="one">First option</mat-option>
     <mat-option value="two">Second option</mat-option>
   </mat-select>
 </mat-form-field>
-
+<h2>Lista de Test Cases</h2>
 <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-  <div class="example-box" *ngFor="let test of tests" cdkDrag>{{test.title}}</div>
+  <div class="example-box" *ngFor="let test of tests" cdkDrag>
+    {{test.title}}
+  </div>
+</div>
+<p></p>
+<div class="example-button-row">
+  <button mat-fab extended color="primary">
+    <mat-icon>save</mat-icon>
+    Guardar
+  </button>
+  <button mat-fab extended color="accent">
+    <mat-icon>cancel</mat-icon>
+    Cancelar
+  </button>
 </div>
 
 <!-- Copyright 2023 Google LLC. All Rights Reserved.
