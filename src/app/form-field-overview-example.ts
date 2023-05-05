@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 interface TestStep {
   title: string;
@@ -23,21 +24,21 @@ interface TestCase {
   testSteps?: TestStep[];
 }
 
-const TEST_STEPS: TestStep[] = [
+const TEST_CASES: TestCase[] = [
   {
-    title: 'abrir Chrome',
+    title: 'Test de login',
     description: 'hacer click sobre el icono de Chrome',
-    order: 1,
+    testType: TestType.Acceptance,
   },
   {
-    title: 'abrir Chrome',
+    title: 'Test de Performance',
     description: 'hacer click sobre el icono de Chrome',
-    order: 2,
+    testType: TestType.Acceptance,
   },
   {
-    title: 'abrir Chrome',
+    title: 'Test de Validacion',
     description: 'hacer click sobre el icono de Chrome',
-    order: 3,
+    testType: TestType.Acceptance,
   },
 ];
 /** @title Simple form field */
@@ -48,5 +49,8 @@ const TEST_STEPS: TestStep[] = [
 })
 export class FormFieldOverviewExample {
   displayedColumns: string[] = ['orden', 'titulo', 'descripcion'];
-  dataSource = TEST_STEPS;
+  tests = TEST_CASES;
+  drop(event: CdkDragDrop<TestCase[]>) {
+    moveItemInArray(this.tests, event.previousIndex, event.currentIndex);
+  }
 }
